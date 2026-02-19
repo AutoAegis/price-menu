@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frontend Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="gradient-bg"></div>
+<div class="custom-cursor"></div>
+
+<nav class="navbar">
+  <div class="logo">FD</div>
+  <div class="nav-links">
+    <a href="#pricing">Pricing</a>
+    <a href="#portfolio">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1 class="headline">
+    <span class="reveal">Modern</span>
+    <span class="reveal">Websites</span>
+    <span class="reveal">Built</span>
+    <span class="reveal">Clean</span>
+  </h1>
+  <p class="subtext">Responsive. Fast. Designed with clarity.</p>
+  <a href="#pricing" class="primary-btn">Explore Packages</a>
+  <svg class="hero-svg" width="200" height="200">
+    <circle cx="100" cy="100" r="80" stroke="#38bdf8" stroke-width="2" fill="none"></circle>
+  </svg>
+</header>
+
+<section id="pricing" class="pricing section">
+  <div class="card tilt" data-price="90">
+    <div class="gloss"></div>
+    <h2>Starter</h2>
+    <div class="price">£90</div>
+    <ul>
+      <li>Single Page</li>
+      <li>Responsive Layout</li>
+      <li>Clean UI</li>
+      <li>Contact Form</li>
+    </ul>
+    <button>Select</button>
+  </div>
+
+  <div class="card highlight tilt" data-price="180">
+    <div class="gloss"></div>
+    <h2>Standard</h2>
+    <div class="price">£180</div>
+    <ul>
+      <li>Up to 4 Pages</li>
+      <li>Custom Layout</li>
+      <li>Smooth Effects</li>
+      <li>Optimised Assets</li>
+    </ul>
+    <button>Select</button>
+  </div>
+
+  <div class="card tilt" data-price="300">
+    <div class="gloss"></div>
+    <h2>Plus</h2>
+    <div class="price">£300</div>
+    <ul>
+      <li>Up to 6 Pages</li>
+      <li>Advanced UI</li>
+      <li>SEO Basics</li>
+      <li>Performance Focus</li>
+    </ul>
+    <button>Select</button>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio parallax section">
+  <h2>Recent Work</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item">Landing Page</div>
+    <div class="portfolio-item">Business Site</div>
+    <div class="portfolio-item">Product Showcase</div>
+  </div>
+</section>
+
+<section class="testimonials section">
+  <h2>Client Feedback</h2>
+  <div class="testimonial-container">
+    <div class="testimonial active">Fast delivery and clean code.</div>
+    <div class="testimonial">Professional communication throughout.</div>
+    <div class="testimonial">Modern design that feels premium.</div>
+  </div>
+</section>
+
+<footer id="contact" class="section">
+  © 2026 Frontend Developer
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
