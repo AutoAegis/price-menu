@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Auto's Website Prices</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -31,13 +30,10 @@
   </h1>
   <p class="subtext">Responsive. Fast. Designed with care.</p>
   <a href="#pricing" class="primary-btn">Explore Packages</a>
-  <svg class="hero-svg" width="200" height="200">
-    <circle cx="100" cy="100" r="80" stroke="#38bdf8" stroke-width="2" fill="none"></circle>
-  </svg>
 </header>
 
 <section id="pricing" class="pricing section">
-  <div class="card tilt" data-price="90">
+  <div class="card tilt" data-price="20">
     <div class="gloss"></div>
     <h2>Starter</h2>
     <div class="price">£20</div>
@@ -49,7 +45,7 @@
     </ul>
   </div>
 
-  <div class="card highlight tilt" data-price="180">
+  <div class="card highlight tilt" data-price="60">
     <div class="gloss"></div>
     <h2>Standard (Recommended)</h2>
     <div class="price">£60</div>
@@ -61,7 +57,7 @@
     </ul>
   </div>
 
-  <div class="card tilt" data-price="300">
+  <div class="card tilt" data-price="80">
     <div class="gloss"></div>
     <h2>Plus</h2>
     <div class="price">£80</div>
@@ -72,7 +68,7 @@
     </ul>
   </div>
 
-  <div class="card tilt" data-price="300">
+  <div class="card tilt" data-price="100">
     <div class="gloss"></div>
     <h2>Pro</h2>
     <div class="price">£100</div>
@@ -83,6 +79,44 @@
       <li>Performance Focus</li>
     </ul>
   </div>
+
+  <div class="card custom-card tilt">
+    <div class="gloss"></div>
+    <h2>Custom</h2>
+    <div class="price">Calculate</div>
+    <p>Click to build your own package</p>
+  </div>
+</section>
+
+<section id="calculator" class="calculator section">
+  <h2>Build Your Package</h2>
+  <form>
+    <label>
+      <span>Number of Pages <span class="icon">📄</span></span>
+      <input type="number" id="pages" min="1" max="20" value="1">
+    </label>
+    <label>
+      <span>Animated UI <span class="icon">✨</span></span>
+      <select id="animatedUI">
+        <option value="0">No</option>
+        <option value="20">Yes (+£20)</option>
+      </select>
+    </label>
+    <label>
+      <span>SEO Optimisation <span class="icon">🔍</span></span>
+      <select id="seo">
+        <option value="0">No</option>
+        <option value="30">Yes (+£30)</option>
+      </select>
+    </label>
+    <label>
+      <span>Extra Features <span class="icon">⚡</span></span>
+      <input type="number" id="extras" min="0" value="0">
+    </label>
+    <div class="total">
+      Total Price: £<span id="totalPrice">0</span>
+    </div>
+  </form>
 </section>
 
 <section id="portfolio" class="portfolio parallax section">
@@ -91,15 +125,6 @@
     <div class="portfolio-item">Landing Page</div>
     <div class="portfolio-item">Business Site</div>
     <div class="portfolio-item">Product Showcase</div>
-  </div>
-</section>
-
-<section class="testimonials section">
-  <h2>Client Feedback</h2>
-  <div class="testimonial-container">
-    <div class="testimonial active">Fast delivery and clean code.</div>
-    <div class="testimonial">Professional communication throughout.</div>
-    <div class="testimonial">Modern design that feels premium.</div>
   </div>
 </section>
 
