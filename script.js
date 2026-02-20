@@ -2,18 +2,18 @@ window.addEventListener("load", ()=>{
   document.body.classList.add("loaded");
 });
 
-const glow=document.querySelector(".custom-cursor");
+const cursor=document.querySelector(".custom-cursor");
 document.addEventListener("mousemove", e=>{
-  glow.style.left=e.clientX+"px";
-  glow.style.top=e.clientY+"px";
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
 });
 
 const cards=document.querySelectorAll(".card");
 const tiltCards=document.querySelectorAll(".tilt");
-const selects=document.querySelectorAll(".card button");
-const counters=document.querySelectorAll(".counter");
-const testimonials=document.querySelectorAll(".testimonial");
+const customCard=document.querySelector('.custom-card');
+const calculator=document.getElementById('calculator');
 
+// Reveal cards on scroll
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){entry.target.classList.add("visible");}
@@ -21,7 +21,7 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:0.3});
 cards.forEach(card=>observer.observe(card));
 
-// Card 3D tilt
+// Tilt effect
 tiltCards.forEach(card=>{
   card.addEventListener("mousemove", e=>{
     const rect=card.getBoundingClientRect();
@@ -36,10 +36,26 @@ tiltCards.forEach(card=>{
   card.addEventListener("mouseleave", ()=>{card.style.transform="rotateX(0) rotateY(0)";});
 });
 
-// Testimonials rotation
-let current=0;
-setInterval(()=>{
-  testimonials[current].classList.remove("active");
-  current=(current+1)%testimonials.length;
-  testimonials[current].classList.add("active");
-},3000);
+// Show calculator on custom card click
+customCard.addEventListener('click', ()=>{
+  calculator.style.display = calculator.style.display==='block' ? 'none' : 'block';
+  calculator.scrollIntoView({behavior:'smooth'});
+});
+
+// Calculator logic
+const pagesInput = document.getElementById('pages');
+const animatedUI = document.getElementById('animatedUI');
+const seo = document.getElementById('seo');
+const extras = document.getElementById('extras');
+const totalPrice = document.getElementById('totalPrice');
+
+function calculatePrice(){
+  let price = pagesInput.value*10; // £10 per page
+  price += parseInt(animatedUI.value);
+  price += parseInt(seo.value);
+  price += parseInt(extras.value);
+  totalPrice.textContent = price;
+}
+
+[pagesInput, animatedUI, seo, extras].forEach(el=>el.addEventListener('input', calculatePrice));
+calculatePrice(); // initial display
