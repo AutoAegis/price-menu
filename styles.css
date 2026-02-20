@@ -1,17 +1,30 @@
-/* Base & layout */
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif;}
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif;}
 html {scroll-behavior:smooth;}
-body {background:#f4f9ff; color:#1e293b; overflow-x:hidden; opacity:0; transition:opacity 0.8s;}
-body.loaded {opacity:1;}
-.grain {position:fixed; width:100%; height:100%; background:url('https://i.ibb.co/2KpB8tV/grain.png'); opacity:0.05; z-index:10; pointer-events:none;}
-.gradient-bg {position:fixed; width:200%; height:200%; background:radial-gradient(circle at 20% 20%,#a5f3fc,transparent 40%),radial-gradient(circle at 80% 30%,#c7d2fe,transparent 40%),radial-gradient(circle at 50% 80%,#bbf7d0,transparent 40%); animation:floatBg 25s ease infinite alternate; z-index:-3; opacity:0.6;}
+body {background:#f4f9ff; color:#1e293b; overflow-x:hidden;}
+
+/* Animated gradient background */
+.gradient-bg {
+  position:fixed; width:200%; height:200%;
+  background:radial-gradient(circle at 20% 20%,#a5f3fc,transparent 40%),
+             radial-gradient(circle at 80% 30%,#c7d2fe,transparent 40%),
+             radial-gradient(circle at 50% 80%,#bbf7d0,transparent 40%);
+  animation:floatBg 25s ease infinite alternate; z-index:-3; opacity:0.6;
+}
+.gradient-bg::before, .gradient-bg::after {
+  content:""; position:absolute; border-radius:50%; width:200px; height:200px; opacity:0.2;
+  background:linear-gradient(45deg,#38bdf8,#22c55e); animation:floatCircles 20s linear infinite;
+}
+.gradient-bg::after { animation-delay:10s; background:linear-gradient(45deg,#fcd34d,#f472b6);}
 @keyframes floatBg{0%{transform:translate(0,0);}100%{transform:translate(-200px,-150px);}}
+@keyframes floatCircles{0%{transform:translate(0,0);}50%{transform:translate(200px,150px);}100%{transform:translate(0,0);}}
+
+.custom-cursor{position:fixed;width:40px;height:40px;background:rgba(56,189,248,0.3);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%); z-index:10;}
 
 .navbar {position:fixed; top:20px; left:50%; transform:translateX(-50%); backdrop-filter:blur(20px); background:rgba(255,255,255,0.6); padding:12px 30px; border-radius:50px; display:flex; gap:40px; align-items:center; box-shadow:0 10px 25px rgba(0,0,0,0.05); z-index:10;}
 .nav-links a {text-decoration:none; color:#0284c7; font-weight:600; transition:0.3s;}
 .nav-links a:hover{opacity:0.6;}
 
-.hero{ text-align:center; padding:140px 20px 100px; position:relative;}
+.hero {text-align:center; padding:140px 20px 100px;}
 .headline{font-size:58px; font-weight:800; line-height:1.1; margin-bottom:20px;}
 .reveal{display:inline-block; opacity:0; transform:translateY(40px); animation:revealText 0.8s forwards;}
 .reveal:nth-child(1){animation-delay:0.1s;} .reveal:nth-child(2){animation-delay:0.2s;} .reveal:nth-child(3){animation-delay:0.3s;} .reveal:nth-child(4){animation-delay:0.4s;}
@@ -19,24 +32,27 @@ body.loaded {opacity:1;}
 .subtext{font-size:18px; opacity:0.8; margin-bottom:30px;}
 .primary-btn{padding:14px 32px; border-radius:40px; background:linear-gradient(90deg,#38bdf8,#22c55e); color:white; font-weight:600; text-decoration:none; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition:0.3s ease;}
 .primary-btn:hover{transform:translateY(-4px);}
-.hero-svg{position:absolute; top:-50px; left:50%; transform:translateX(-50%); opacity:0.3;}
-
-.cursor-glow{position:fixed;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.3), transparent 60%);pointer-events:none;transform:translate(-50%,-50%); z-index:-1;}
-
-.section{padding:80px 20px;}
 
 /* Pricing cards */
 .pricing{display:flex; justify-content:center; gap:40px; flex-wrap:wrap; padding:60px 20px 100px;}
-.card{position:relative;background:rgba(255,255,255,0.7);backdrop-filter:blur(20px); padding:40px; border-radius:28px; width:320px; box-shadow:0 20px 40px rgba(0,0,0,0.05); transition:0.4s; opacity:0; transform:translateY(40px); overflow:hidden; transform-style:preserve-3d;}
+.card{position:relative;background:rgba(255,255,255,0.7);backdrop-filter:blur(20px); padding:40px; border-radius:28px; width:280px; box-shadow:0 20px 40px rgba(0,0,0,0.05); transition:0.4s; opacity:0; transform:translateY(40px); transform-style:preserve-3d;}
 .card.visible{opacity:1; transform:translateY(0);}
 .card:hover{transform:translateY(-10px);}
 .gloss{position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:linear-gradient(120deg, rgba(255,255,255,0.4), transparent); transform:rotate(25deg); pointer-events:none;}
 .highlight{border:2px solid #38bdf8;}
-.price{font-size:36px; margin:15px 0; font-weight:700; color:#0284c7;}
+.custom-card{border:2px dashed #38bdf8; cursor:pointer; transition:0.3s;}
+.custom-card:hover{transform:translateY(-5px); background:rgba(56,189,248,0.1);}
+.price{font-size:28px; margin:15px 0; font-weight:700; color:#0284c7;}
 .card ul{list-style:none; margin-bottom:20px;}
 .card li{margin-bottom:8px; opacity:0.8;}
-.card button{width:100%; padding:12px; border-radius:14px; border:none; background:linear-gradient(90deg,#38bdf8,#22c55e); color:white; font-weight:600; cursor:pointer; transition:0.2s;}
-.card button:hover{transform:scale(1.03);}
+
+/* Calculator */
+.calculator { display:none; max-width:600px; margin:40px auto; padding:40px; background:rgba(255,255,255,0.8); backdrop-filter:blur(15px); border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,0.05); }
+.calculator form { display:flex; flex-direction:column; gap:20px; }
+.calculator label { display:flex; justify-content:space-between; font-weight:600; }
+.calculator input, .calculator select { padding:8px 12px; border-radius:8px; border:1px solid #ccc; }
+.calculator .total { font-size:24px; font-weight:700; color:#0284c7; text-align:right; margin-top:20px; }
+.icon {margin-left:6px;}
 
 /* Portfolio */
 .portfolio{padding:80px 20px;text-align:center;}
@@ -44,15 +60,4 @@ body.loaded {opacity:1;}
 .portfolio-item{width:250px;height:180px;background:rgba(255,255,255,0.7); backdrop-filter:blur(20px); border-radius:20px; display:flex; align-items:center; justify-content:center; transition:0.3s; cursor:pointer;}
 .portfolio-item:hover{transform:scale(1.05);}
 
-/* Testimonials */
-.testimonials{text-align:center; padding:80px 20px;}
-.testimonial-container{max-width:600px;margin:40px auto 0; position:relative;}
-.testimonial{display:none; font-size:18px; opacity:0.8;}
-.testimonial.active{display:block;}
-
-/* Stats */
-.stats{display:flex; justify-content:center; gap:60px; padding:80px 20px; text-align:center;}
-.stat h2{font-size:48px; color:#0284c7;}
-
-/* Footer */
 footer{text-align:center; padding:40px; opacity:0.6;}
